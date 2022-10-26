@@ -1,0 +1,18 @@
+body{
+    background:url(../img/entrada.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
+    background-attachment: fixed;
+}
+body::before{
+    content: "";
+    width: 100%;
+    min-height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: linear-gradient(90deg, #7FA6C1,#737F9E);
+    opacity: 0.4;
+}

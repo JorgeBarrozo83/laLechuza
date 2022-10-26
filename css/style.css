@@ -1,0 +1,41 @@
+body {
+  background: url(../img/entrada.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+  background-attachment: fixed; }
+
+body::before {
+  content: "";
+  width: 100%;
+  min-height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: linear-gradient(90deg, #7FA6C1, #737F9E);
+  opacity: 0.4; }
+
+.nav {
+  max-width: 100%;
+  display: flex;
+  flex-direction: row;
+  background-color: #404D38;
+  justify-content: center;
+  justify-content: flex-end;
+  list-style-type: none;
+  text-decoration: none;
+  padding: 10px;
+  padding-right: 15%; }
+  .nav li a {
+    list-style-type: none;
+    text-decoration: none;
+    padding: 15px;
+    font-size: 25px;
+    color: #FDFEFE; }
+
+.logo {
+  max-width: 100%;
+  width: 10rem;
+  justify-content: center;
+  padding-right: 40%; }
