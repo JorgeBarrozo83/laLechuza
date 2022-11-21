@@ -19,8 +19,10 @@
   },
   "homepage": "https://github.com/JorgeBarrozo83/laLechuza#readme",
   "devDependencies": {
+    "node": "^19.1.0",
     "node-sass": "^7.0.3",
-    "nodemon": "^2.0.19"
+    "nodemon": "^2.0.20",
+    "sass": "^1.56.1"
   },
   "dependencies": {
     "abbrev": "^1.1.1",

@@ -6,15 +6,7 @@ body {
   min-height: 100vh;
   background-attachment: fixed; }
 
-body::before {
-  content: "";
-  width: 100%;
-  min-height: 100vh;
-  position: absolute;
-  top: 0;
-  left: 0;
-  background: linear-gradient(90deg, #7FA6C1, #737F9E);
-  opacity: 0.4; }
+
 
 .nav {
   max-width: 100%;
@@ -39,3 +31,32 @@ body::before {
   width: 10rem;
   justify-content: center;
   padding-right: 40%; }
+  
+  #seleccion {
+    display: flex;
+    justify-content: center;
+    justify-content: space-evenly;
+    flex-direction: column;
+    padding: 250px 700px 250px 700px;
+    text-align: center;
+    text-size-adjust: 100px;
+    font-size: 25px;
+    color: black;
+    
+  }
+h2{
+  color: #4946B8;
+  font-size: 35px;
+}
+label{
+  justify-content: space-between;
+  padding: 1vh;
+  padding-bottom: 15px;
+  margin-top: 10 px;
+}
+#confirmar{
+  padding-top: 50px;
+  padding: 1vh;
+  border-radius: 100px;
+
+}
