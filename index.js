@@ -1,39 +1,37 @@
-const inputNombre = document.getElementById("nombre").value;
-const inputApellido = document.getElementById("apellido").value;
-const inputPersonas = document.getElementById("personas").value;
-const inputDias = document.getElementById("dias").value;
 const botonConfirmar = document.getElementById("confirmar");
-const divSeleccion = document.getElementById("seleccion");
-const divAsignacion = document.getElementById("Asignacion");
 
-botonConfirmar.onclick = () => {
-  if (
-    inputNombre.value &&
-    inputApellido.value &&
-    inputPersonas.value &&
-    inputDias
-  ) {
+botonConfirmar.addEventListener('click', () => {
+
+
+  const divSeleccion = document.getElementById("seleccion");
+  const divAsignacion = document.getElementById("Asignacion");
+  const inputNombre = document.getElementById("nombre").value;
+  const inputApellido = document.getElementById("apellido").value;
+  const inputPersonas = document.getElementById("personas").value;
+  const inputDias = document.getElementById("dias").value;
+ 
     const huesped = {
-      nombre: inputNombre.value,
-      apellido: inputApellido.value,
-      personas: inputPersonas.value,
-      dias: inputDias.value,
+      nombre: inputNombre,
+      apellido: inputApellido,
+      personas: inputPersonas,
+      dias: inputDias,
     };
+    console.log(huesped)
     localStorage.setItem("infoHuesped", JSON.stringify(huesped));
-  }
+  
 
   divSeleccion.remove()
-  
-  
-  const cabanaAsignada = document.createElement("h3");
-  cabanaAsignada.innerText = `${huesped.nombre} ${huesped.apellido} según tu seleccion, tu presupuesto por ${huesped.personas} personas y ${huesped.dias} es de ${presupuesto}`;
-  divAsignacion.append(cabanaAsignada);
-  const presupuesto = 0;
-   
-  
 
-      
-}
+ const presupuesto = 0;
+ 
+  const cabanaAsignada = document.createElement("h3");
+  cabanaAsignada.innerText = `${huesped.nombre} ${huesped.apellido} según tu seleccion, tu presupuesto por ${huesped.personas} por ${huesped.dias} dias es de ${presupuesto}`;
+  divAsignacion.append(cabanaAsignada);
+ 
+
+
+
+})
 
 const cabanasDisponibles = [];
 class Cabanas {
