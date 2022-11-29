@@ -1,4 +1,6 @@
 const botonConfirmar = document.getElementById("confirmar");
+const checkIn= document.getElementById("checkIn");
+const checkOut= document.getElementById("checkOut");
 
 botonConfirmar.addEventListener("click", () => {
   const divSeleccion = document.getElementById("seleccion");
@@ -18,19 +20,16 @@ botonConfirmar.addEventListener("click", () => {
   localStorage.setItem("infoHuesped", JSON.stringify(huesped));
 
   divSeleccion.remove();
-
   
-  
-  function costoEstadia(dia, cabana){
-    presupuesto= cabanasDisponibles.precio*huesped.dias
-    return presupuesto
-  }
-  const presupuesto= presupuesto+costoEstadia
-  
- console.log(presupuesto)
+ 
+ 
+ const presupuesto=0
+ 
   const cabanaAsignada = document.createElement("h3");
   cabanaAsignada.innerText = `${huesped.nombre} ${huesped.apellido} según tu seleccion, tu presupuesto por ${huesped.personas} por ${huesped.dias} dias es de ${presupuesto}`;
   divAsignacion.append(cabanaAsignada);
+
+ 
 
   Swal.fire({
     title: ` ${huesped.personas}`,
@@ -41,34 +40,35 @@ botonConfirmar.addEventListener("click", () => {
     imageAlt: "Cabaña Asignada",
   });
 });
+let fecha1= checkIn
+let fecha2= checkOut
+let milisegundosDia= 24 * 60 *60 *1000;
+let milisegundosTrancurridos= Math.abs(fecha1.getAttributeNames()- fecha2.getAttributeNames());
+let diasHospedaje= Math.round(milisegundosTrancurridos/milisegundosDia);
+console.log(diasHospedaje)
+
+function tarifa() {
+  if(diasHospedaje>=7){
+    return cabanasDisponibles.prebajo
+  } else{
+     cabanasDisponibles.precio
+  }
+}
 
 
 
 const cabanasDisponibles = [];
 class Cabanas {
-  constructor(nombre, id, precio) {
+  constructor(nombre, id, precio, prebajo) {
     this.nombre = nombre;
     this.id = id;
     this.precio = precio;
+    this.prebajo= prebajo;
   }
 }
-const retama = new Cabanas("Retama", 1, 8000);
+const retama = new Cabanas("Retama", 1, 8000, 6000);
 cabanasDisponibles.push(retama);
-const amapola = new Cabanas("Amapola", 2, 10000);
+const amapola = new Cabanas("Amapola", 2, 10000, 8000);
 cabanasDisponibles.push(amapola);
-const lechuza = new Cabanas("Lechuza", 3, 14000);
+const lechuza = new Cabanas("Lechuza", 3, 14000, 12000);
 cabanasDisponibles.push(lechuza);
-
-//let presupuesto=0
-//let diasVacaciones = parseInt(prompt("¿Cuantos dias quieres hospedarte?"));
-//console.log(diasVacaciones)
-//costoEstadia(diasVacaciones, cabanaQueToca)
-
-//function costoEstadia(dias, cabana) {
-//presupuesto = dias * cabana.precio
-
-//return presupuesto
-
-//}
-//let presupuestoFinal= costoEstadia(diasVacaciones, cabanaQueToca);
-//alert (`Tu presupuesto de la cabaña ${cabanaQueToca.nombre} por ${diasVacaciones} dias es de $ ${presupuesto}`);
