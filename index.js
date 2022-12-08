@@ -25,16 +25,14 @@ const mostrarCabanas = async () => {
    </div>
  </div>
  `;
-
- 
   });
 
   cabanasJson.forEach((cab) => {
     const botonSeleccionar = document.getElementById(`seleccionar-${cab.id}`);
     botonSeleccionar.addEventListener("click", () => {
-      localStorage.setItem("cabElejida",JSON.stringify(cab))
-      
-      console.log(cab)
+      localStorage.setItem("cabElejida", JSON.stringify(cab));
+
+      console.log(cab);
       divCards.remove();
     });
   });
@@ -56,28 +54,44 @@ botonConfirmar.addEventListener("click", () => {
     mes: inputMes.value,
     dias: inputDias.value,
   };
-  localStorage.setItem("infoReserva",JSON.stringify (huesped))
-  console.log(huesped)
-  
+  localStorage.setItem("infoReserva", JSON.stringify(huesped));
+  console.log(huesped);
+  const objHuesped = JSON.parse(localStorage.getItem("infoReserva"));
+  const objCabana = JSON.parse(localStorage.getItem("cabElejida"));
+  let tarifaFinal= tarifa(objHuesped, objCabana)
 
-  
+  const presupuesto = 0;
+  const presupuestoFinal = presupuesto + tarifaFinal;
+  console.log(presupuestoFinal);
+  divSeleccion.remove()
+
+const saludoFinal = document.createElement("h2");
+saludoFinal.innerText = `${objHuesped.nombre} ${objHuesped.apellido} tu presupuesto por ${objHuesped.dias} el mes ${objHuesped.mes} es de $ ${presupuestoFinal}. Te dejamos algunas fotos de ${objCabana.nombre} y de todo los que podes hacer.`;
+mensajeFinal.append(saludoFinal);
+
+mensajeFinal.innerHTML+=`
+<div id="fotos">
+<img src="./img/cabana-2dorm-7-1.jpg">
+<img src="./img/cabana-2dorm-1-1.jpg">
+<img src="./img/cabana-2dorm-1-1.jpg">
+<img src="./img/cabalgata.jpg">
+<img src="./img/rafting.jpg">
+<img src="./img/sup.jpg">
+<img src="./img/trekking.jpg">
+</div>
+`
 });
-const objHuesped = JSON.parse(localStorage.getItem("infoReserva"));
-const objCabana= JSON.parse(localStorage.getItem("cabElejida"));
-  
-const presupuesto = 0;
+
+let tarifa1=0;
+let tarifa2=0;
+
 function tarifa(objHuesped, objCabana) {
-  objHuesped.dias >= 6 && objHuesped.mes < 4
-    ? objCabana.precio * objHuesped.dias
-    : objCabana.prebajo * objHuesped.dias;
-}
-const presupuestoFinal = presupuesto + tarifa;
-
-
-console.log(presupuestoFinal)
-// //     console.log(huesped);
-// //     localStorage.setItem("infoHuesped", JSON.stringify(huesped));
-//    divSeleccion.remove();
+  if(objHuesped.dias >= 6 && objHuesped.mes<4){
+    tarifa1=objCabana.precio * objHuesped.dias
+    return tarifa1
+  }else{tarifa2=objCabana.prebajo * objHuesped.dias
+    return tarifa2
+}}
 
 const cabanasDisponibles = [];
 class Cabanas {

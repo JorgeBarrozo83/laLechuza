@@ -79,3 +79,21 @@ h3{
   font-size: 25px;
   color: beige;
 }
+#Control{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+#fotos{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  justify-content: space-around;
+  margin: 700px;
+  margin-top: 100px;
+  max-width: 70%;
+  max-height: 70%;
+}
+img{
+  padding: 30px;
+}
